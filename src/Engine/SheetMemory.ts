@@ -207,6 +207,11 @@ export class SheetMemory {
         return displayStrings;
     }
 
+    isValidCellLabel(label: string): boolean {
+        const [column, row] = Cell.cellToColumnRow(label);
+        return column >= 0 && column < this._numColumns && row >= 0 && row < this._numRows;
+    }
+
     /** 
      * get a json representation of the sheet We only need to store
      * the formula, value, and error for each cell
